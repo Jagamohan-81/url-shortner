@@ -1,10 +1,17 @@
 const pool = require("../config/db");
 const { nanoid } = require("nanoid");
+const validator = require("validator");
 
 exports.shortenUrl = async (req, res) => {
   try {
     const { longUrl } = req.body;
+    if (!longUrl) {
+      return res.status(400).json({ error: "Missing longUrl parameter" });
+    }
 
+    if (!validator.isURL(longUrl, { require_protocol: true })) {
+      return res.status(400).json({ error: "Invalid URL format. Please provide a valid URL with 'http://' or 'https://'" });
+    }
     const existing = await pool.query("SELECT short_id FROM urls WHERE long_url = $1", [longUrl]);
     if (existing.rows.length > 0) {
       return res.json({ shortUrl: `${req.protocol}://${req.get("host")}/${existing.rows[0].short_id}`,shortId:existing.rows[0].short_id });

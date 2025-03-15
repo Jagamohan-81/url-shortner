@@ -25,6 +25,7 @@
     "morgan": "^1.10.0",
     "nanoid": "^3.3.9",
     "pg": "^8.14.0",
-    "swagger-ui-express": "^5.0.1"
+    "swagger-ui-express": "^5.0.1",
+    "validator": "^13.12.0"
   }
 }
