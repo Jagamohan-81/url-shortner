@@ -11,9 +11,7 @@ yarn-error.log*
 # Environment variables
 .env
 
-# Swagger
-swagger.json
-swagger.yaml
+
 
 # Docker
 docker-compose.yml
