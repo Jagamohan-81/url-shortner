@@ -34,11 +34,6 @@ exports.redirectUrl = async (req, res) => {
 
     if (result.rows.length > 0) {
       const longUrl = result.rows[0].long_url;
-      await pool.query("INSERT INTO url_visits (short_id) VALUES ($1)", [shortId]);
-      res.setHeader("Access-Control-Allow-Origin", "*");
-      res.setHeader("Access-Control-Allow-Methods", "GET, OPTIONS");
-      res.setHeader("Access-Control-Allow-Headers", "Content-Type");
-      res.redirect(302, longUrl);
       res.redirect(longUrl);
     } else {
       res.status(404).json({ error: "URL not found" });
