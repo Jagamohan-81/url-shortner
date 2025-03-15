@@ -49,25 +49,6 @@
         }
       }
     },
-    "/{shortId}": {
-      "get": {
-        "summary": "Redirect to original URL",
-        "parameters": [
-          {
-            "name": "shortId",
-            "in": "path",
-            "required": true,
-            "schema": {
-              "type": "string"
-            }
-          }
-        ],
-        "responses": {
-          "302": { "description": "Redirects to the original URL" },
-          "404": { "description": "URL not found" }
-        }
-      }
-    },
     "/stats/{shortId}": {
       "get": {
         "summary": "Get URL visit statistics",
