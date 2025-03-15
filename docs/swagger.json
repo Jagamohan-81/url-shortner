@@ -49,6 +49,7 @@
         }
       }
     },
+    
     "/stats/{shortId}": {
       "get": {
         "summary": "Get URL visit statistics",
